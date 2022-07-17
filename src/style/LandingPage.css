@@ -1,0 +1,19 @@
+.myBG {
+  background: url("../assets/img/Bg/main.jpg");
+  background-size: cover;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+  text-shadow: 2px 2px black;
+  letter-spacing: 4px;
+}
+
+.trending {
+  height: auto;
+  background: url("../assets/img/Bg/trending.jpg");
+  background-size: cover;
+}
+
