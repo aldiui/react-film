@@ -15,6 +15,8 @@ function App() {
       </div>
       <div className="trending">
         <Trending />
+      </div>
+      <div className="trending">
         <Superhero />
       </div>
     </div>
