@@ -17,7 +17,7 @@ const Superhero = () => {
       });
   }, []);
   return (
-    <Container className="py-5" id="trending">
+    <Container className="py-5" id="superhero">
       <h1 className="text-white text-end mb-4">Superhero Movies</h1>
       <Row className="justify-content-center">
         {movies.map((result, index) => {
