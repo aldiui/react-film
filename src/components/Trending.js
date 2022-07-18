@@ -22,7 +22,7 @@ const Trending = () => {
       <Row className="justify-content-center">
         {movies.map((result, index) => {
           return (
-            <Col lg={4} md={6} className="my-2" key={index}>
+            <Col lg={4} md={6} className="my-3" key={index}>
               <Card className="bg-dark border-4 border-white">
                 <Image src={`${process.env.REACT_APP_IMG_URL}/${result.poster_path}`} className="img-fluid" />
                 <div className="p-2 m-1 text-white">
