@@ -4,11 +4,11 @@
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 3.4rem;
   font-weight: 800;
   line-height: 1;
   text-shadow: 2px 2px black;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
 }
 
 .trending {
@@ -17,3 +17,7 @@
   background-size: cover;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,200;1,300&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
+}
