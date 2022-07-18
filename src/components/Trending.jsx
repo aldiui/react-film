@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Card, Container, Col, Row, Image } from "react-bootstrap";
 import axios from "axios";
+import React from "react";
 
-const Superhero = () => {
+const Trending = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_BASE_URL}/discover/movie`, {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/trending/movie/day`, {
       params: {
         api_key: process.env.REACT_APP_TMDB_KEY,
       },
@@ -15,7 +16,7 @@ const Superhero = () => {
   }, []);
   return (
     <Container className="py-5" id="trending">
-      <h1 className="text-white text-end mb-4">Superhero Movies</h1>
+      <h1 className="text-white text-end mb-4">Trending Movies</h1>
       <Row className="justify-content-center">
         {movies.map((result, index) => {
           return (
@@ -36,4 +37,4 @@ const Superhero = () => {
   );
 };
 
-export default Superhero;
+export default Trending;

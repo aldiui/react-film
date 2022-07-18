@@ -4,6 +4,7 @@ import NavigationBar from "./components/NavigationBar";
 import Superhero from "./components/Superhero";
 import Trending from "./components/Trending";
 import "./style/LandingPage.css";
+import React from "react";
 
 function App() {
   return (
