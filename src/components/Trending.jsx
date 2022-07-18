@@ -6,13 +6,15 @@ import React from "react";
 const Trending = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_BASE_URL}/trending/movie/day`, {
-      params: {
-        api_key: process.env.REACT_APP_TMDB_KEY,
-      },
-    }).then((response) => {
-      setMovies(response.data.results)
-    })
+    axios
+      .get(`${process.env.REACT_APP_BASE_URL}/trending/movie/day`, {
+        params: {
+          api_key: process.env.REACT_APP_TMDB_KEY,
+        },
+      })
+      .then((response) => {
+        setMovies(response.data.results);
+      });
   }, []);
   return (
     <Container className="py-5" id="trending">
@@ -26,11 +28,11 @@ const Trending = () => {
                 <div className="p-2 m-1 text-white">
                   <Card.Title className="text-center">{result.title}</Card.Title>
                   <Card.Text>{result.overview}</Card.Text>
-                  <Card.Text>{result.release_date}</Card.Text>
+                  <Card.Text className="text-center">Release Date : {result.release_date}</Card.Text>
                 </div>
               </Card>
             </Col>
-          )
+          );
         })}
       </Row>
     </Container>
