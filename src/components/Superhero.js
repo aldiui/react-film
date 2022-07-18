@@ -1,71 +1,36 @@
+import { useEffect, useState } from "react";
 import { Card, Container, Col, Row, Image } from "react-bootstrap";
-import thorImage from "../assets/img/Trending/thor.jpg";
+import axios from "axios";
 
 const Superhero = () => {
+  const [movies, setMovies] = useState([]);
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/discover/movie`, {
+      params: {
+        api_key: process.env.REACT_APP_TMDB_KEY,
+      },
+    }).then((response) => {
+      setMovies(response.data.results)
+    })
+  }, []);
   return (
-    <Container className="py-5" id="superhero">
+    <Container className="py-5" id="trending">
       <h1 className="text-white text-end mb-4">Superhero Movies</h1>
       <Row className="justify-content-center">
-        <Col lg={4} md={6} className="my-2">
-          <Card className="bg-dark border-4 border-white">
-            <Image src={thorImage} alt="Card image" />
-            <div className="p-2 m-1 text-white">
-              <Card.Title className="text-center">THOR LOVE AND THUNDER</Card.Title>
-              <Card.Text>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</Card.Text>
-              <Card.Text>Last updated 3 mins ago</Card.Text>
-            </div>
-          </Card>
-        </Col>
-        <Col lg={4} md={6} className="my-2">
-          <Card className="bg-dark border-4 border-white">
-            <Image src={thorImage} alt="Card image" />
-            <div className="p-2 m-1 text-white">
-              <Card.Title className="text-center">THOR LOVE AND THUNDER</Card.Title>
-              <Card.Text>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</Card.Text>
-              <Card.Text>Last updated 3 mins ago</Card.Text>
-            </div>
-          </Card>
-        </Col>
-        <Col lg={4} md={6} className="my-2">
-          <Card className="bg-dark border-4 border-white">
-            <Image src={thorImage} alt="Card image" />
-            <div className="p-2 m-1 text-white">
-              <Card.Title className="text-center">THOR LOVE AND THUNDER</Card.Title>
-              <Card.Text>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</Card.Text>
-              <Card.Text>Last updated 3 mins ago</Card.Text>
-            </div>
-          </Card>
-        </Col>
-        <Col lg={4} md={6} className="my-2">
-          <Card className="bg-dark border-4 border-white">
-            <Image src={thorImage} alt="Card image" />
-            <div className="p-2 m-1 text-white">
-              <Card.Title className="text-center">THOR LOVE AND THUNDER</Card.Title>
-              <Card.Text>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</Card.Text>
-              <Card.Text>Last updated 3 mins ago</Card.Text>
-            </div>
-          </Card>
-        </Col>
-        <Col lg={4} md={6} className="my-2">
-          <Card className="bg-dark border-4 border-white">
-            <Image src={thorImage} alt="Card image" />
-            <div className="p-2 m-1 text-white">
-              <Card.Title className="text-center">THOR LOVE AND THUNDER</Card.Title>
-              <Card.Text>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</Card.Text>
-              <Card.Text>Last updated 3 mins ago</Card.Text>
-            </div>
-          </Card>
-        </Col>
-        <Col lg={4} md={6} className="my-2">
-          <Card className="bg-dark border-4 border-white">
-            <Image src={thorImage} alt="Card image" />
-            <div className="p-2 m-1 text-white">
-              <Card.Title className="text-center">THOR LOVE AND THUNDER</Card.Title>
-              <Card.Text>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</Card.Text>
-              <Card.Text>Last updated 3 mins ago</Card.Text>
-            </div>
-          </Card>
-        </Col>
+        {movies.map((result, index) => {
+          return (
+            <Col lg={4} md={6} className="my-2" key={index}>
+              <Card className="bg-dark border-4 border-white">
+                <Image src={`${process.env.REACT_APP_IMG_URL}/${result.poster_path}`} className="img-fluid" />
+                <div className="p-2 m-1 text-white">
+                  <Card.Title className="text-center">{result.title}</Card.Title>
+                  <Card.Text>{result.overview}</Card.Text>
+                  <Card.Text>{result.release_date}</Card.Text>
+                </div>
+              </Card>
+            </Col>
+          )
+        })}
       </Row>
     </Container>
   );
